@@ -54,6 +54,25 @@ body{
     box-shadow: 0 15px 30px rgba(0,0,0,0.3); /*Criando a Sombra*/
 }
 
+.task-item{
+  display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-bottom: 6px;
+   margin-top: 6px; 
+}
+
+.task-item i{
+    background-color: #41b883;
+    color: #fff;
+    padding: 12px;
+    border-radius: 5px;
+}
+
+.task-item p{
+    cursor: pointer;
+}
+
 .new-task-button{
     flex: 1;
     border-radius: 5px;
@@ -75,4 +94,8 @@ body{
 
 .error::placeholder{
     color: red;
+}
+
+.completed{
+    text-decoration: line-through;
 }

@@ -24,6 +24,9 @@ const handleAddTask = () =>{
     const textContent = document.createElement("p");
     textContent.innerText = inputElement.value;
 
+    //Adicionando evento ao clicar a na tarefa concluída
+    textContent.addEventListener('click',() => handleclick(textContent));
+
     const deleteItem = document.createElement("i");
     deleteItem.classList.add("fa-solid");
     deleteItem.classList.add("fa-trash-can");
@@ -34,13 +37,23 @@ const handleAddTask = () =>{
     //Add cada nova task para a caixa dos items
     taskContainer.appendChild(taskItemContainer);
 
+    inputElement.value = "";
 }
+
 const handleInputChange = () => {
-    const inputisValid = validateInput();
-    
-    //Retirar as ações de erro caso o input seja corrigido 
-    if(inputisValid){
-        return inputElement.classList.remove("error");
+  const inputIsValid = validateInput();
+
+  if (inputIsValid) {
+    return inputElement.classList.remove("error");
+  }
+};
+
+const handleclick = (taskContent) => {
+    const tasks = taskContainer.childNodes;
+    for(const task of tasks){
+        if(task.firstChild.isSameNode(taskContent)){
+            task.firstChild.classList.toggle("completed");
+        }
     }
 }
 //Evento para verificar a validação do input ao clicar no botão 
